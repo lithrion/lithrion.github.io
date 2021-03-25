@@ -1,3 +1,10 @@
 theme: jekyll-theme-hacker
 title: Welcome to Leigh Carter's Project Portfolio Page.
 description: This page is intended to showcase Cybersecurity related projects that I have completed.
+
+github_username: lithrion
+#email: sample@email.com
+#linkedin reference?
+markdown: kramdown
+
+
