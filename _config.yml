@@ -10,5 +10,5 @@ markdown: kramdown
 collections:
   htb:
     output: true
-    permalink: /walkthroughs/:path/
+    permalink: /htb/:path/
 
