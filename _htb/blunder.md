@@ -60,17 +60,17 @@ which started up the reverse shell. Since the shell netcat establishes is kinda 
 
 Now wish shell access, I still didn't have the user flag yet, so I dug around a little.
 
-[ls](/images/blunder/ls.jpg)
+![ls](/images/blunder/ls.jpg)
 I found a newer version of bludit, 3.10.0a and inside there found a users.php.
-[users.php](/images/blunder/users.jpg)
+![users.php](/images/blunder/users.jpg)
 
 Which has the username Hugo and the hash of his password. I tossed that passsword hash into crackstation.net which gave back Hugo's password, Password120.
 
 From there I switched users to Hugo
-[hugo login](/images/blunder/hugo.jpg)
+![hugo login](/images/blunder/hugo.jpg)
 
 and checking his home directory.
-[home directory](/images/blunder/home.jpg)
+![home directory](/images/blunder/home.jpg)
 revealed the user flag.
 
 ## Escalting to root access
