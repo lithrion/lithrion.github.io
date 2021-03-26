@@ -1,6 +1,7 @@
 ---
 title: Blunder Walkthrough
 description: Description placeholder
+layout: default
 ---
 
 Machine: Blunder
