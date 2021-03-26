@@ -1,6 +1,9 @@
 <nav>
   <ul>
     <li><a href="/hack-the-box-walkthoughs">Hack the Box Walkthroughs</a></li>
+  </ul>
+  </nav>
+  
 
 ## Welcome to GitHub Pages
 
