@@ -8,7 +8,7 @@ github_username: lithrion
 markdown: kramdown
 
 collections:
- htb:
-   output: true
-   permalink: /htb/:path/
+  htb:
+    output: true
+    permalink: /htb/:path/
 
