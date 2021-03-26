@@ -7,7 +7,7 @@ layout: default
 Machine: Blunder
 IP: 10.10.10.191
 
-# Reconassiance
+## Reconassiance
 
 I started off doing a port scan ''nmap -sC -sV 10.10.10.191''
 
@@ -36,6 +36,8 @@ it found a todo.txt.
 
 which conviently contained the username fergus. Now on to a password.
 
+## Gaining a Foothold
+
 Doing some research on bludit and checking its security documnetation I saw that it has some brute force mitigation that will blacklist an ip address after enough failed loging attempts. [brute-force-protection](https://docs.bludit.com/en/security/brute-force-protection) Looking up that version number from earlier, 3.9.2, I found a way to bypass the brute force mitigation at [https://rastating.github.io/bludit-brute-force-mitigation-bypass/](https://rastating.github.io/bludit-brute-force-mitigation-bypass/) which also described how it worked pretty nicely.
 
 In order to prevent locking out everyone when say, a load balanced was fowarding requests to the login server, bludit used the ''HTTP_X-FORWARDED_FOR'' header to find the client's IP. What it didn't do, was validate the IP address doing the forwarding. By claiming to be forwarding the login attempt from a different fake IP Address every time, the fake ip address end up on the blacklist instead of our real IP, so the brute force attempt can keep on going.
@@ -59,6 +61,8 @@ which started up the reverse shell. Since the shell netcat establishes is kinda 
 ''python -c 'import pty; pty.spawn("/bin/bash")''
 
 Now wish shell access, I still didn't have the user flag yet, so I dug around a little.
+
+## The User flag
 
 ![ls](./images/blunder/ls.jpg)
 I found a newer version of bludit, 3.10.0a and inside there found a users.php.
