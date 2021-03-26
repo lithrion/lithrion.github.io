@@ -2,14 +2,14 @@
 title: HTB Walkthroughs
 ---
 
-Testing which page is loading, this is the one in the root directory.
-
 {% for walkthrough in site.htb %}
 
-<a href="{{ walkthrough.url | prepend: site.baseurl }}">
-  <h2>{{ walkthrough.title }}</h2>
-  </a>
+<!-- <a href="{{ walkthrough.url | prepend: site.baseurl }}"> -->
+##[{{ walkthrough.title }}]({{ walkthrough.url | prepend: site.baseurl }})
   
-  <p class ="post-excerpt">{{ walkthrough.description | truncate: 160 }}</p>
+  <!-- <h2>{{ walkthrough.title }}</h2>
+  </a>
+  -->
+  {{ walkthrough.description | truncate: 160 }}
   
   {% endfor %}
