@@ -84,7 +84,7 @@ Checking Hugo's privilages, I found that he had sudo access as any users except 
 
 This actually led me to a handful of red herrings. I found a couple different system users on the machine with versions that had privilage escalation vulnerabilities associated with them, but as I dug deeper I found the vulnerabilities were also tied to other services that weren't on the machine to take advantage of. Eventually I tracked down CVE-2019-14287, a vulnerability is sudo versions prior to 1.8.28. Turns out, that sudo would treat negative user IDs as if they were 0, which is root's user ID. Since Huge can use sudo as any user other than root (ID 0), it'll let him run sudo with an ID of say, -1. Then that ID of -1 actually gets treated as ID 0, and hugo just ran a command as root.
 
-Using the -u flag on sudo to specific a user ID, and \#-1 to enter the negative value, I ran the command
+Using the -u flag on sudo to specific a user ID, and \\#-1 to enter the negative value, I ran the command
 `sudo -u \#-1 bash`
 ![root access]({{ site.url }}/images/htb/blunder/root.jpg)
 to open up a new bash shell as root. Then I moved over to root's home directory, and there was the root flag. Mission accomplished.
