@@ -7,4 +7,6 @@ github_username: lithrion
 #linkedin reference?
 markdown: kramdown
 
+collections:
+ - hack-the-box-walkthroughs
 
