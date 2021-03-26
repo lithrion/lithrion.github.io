@@ -40,18 +40,18 @@ which conviently contained the username fergus. Now on to a password.
 
 Doing some research on bludit and checking its security documnetation I saw that it has some brute force mitigation that will blacklist an ip address after enough failed loging attempts. [brute-force-protection](https://docs.bludit.com/en/security/brute-force-protection) Looking up that version number from earlier, 3.9.2, I found a way to bypass the brute force mitigation at [https://rastating.github.io/bludit-brute-force-mitigation-bypass/](https://rastating.github.io/bludit-brute-force-mitigation-bypass/) which also described how it worked pretty nicely.
 
-In order to prevent locking out everyone when say, a load balanced was fowarding requests to the login server, bludit used the ''HTTP_X-FORWARDED_FOR'' header to find the client's IP. What it didn't do, was validate the IP address doing the forwarding. By claiming to be forwarding the login attempt from a different fake IP Address every time, the fake ip address end up on the blacklist instead of our real IP, so the brute force attempt can keep on going.
+In order to prevent locking out everyone when say, a load balanced was fowarding requests to the login server, bludit used the `HTTP_X-FORWARDED_FOR` header to find the client's IP. What it didn't do, was validate the IP address doing the forwarding. By claiming to be forwarding the login attempt from a different fake IP Address every time, the fake ip address end up on the blacklist instead of our real IP, so the brute force attempt can keep on going.
 
 rastating.github.io had a nice proof of concept for the rate limit bypass, but I did have to make a few modifications to the python script to make it use a wordlist for the passwords. [rate_limit_bypass.py](https://github.com/lithrion/htb_scripts/blob/main/blunder/rate_limit_bypass.py) I launched the brute force attack and....nothing. Pretty certain that this rate limit bypass was the exploit that was that was to get into this machine I tried another wordlist, and still nothing. Wracking my brain for a possible list of words where the password could be hiding, I eventually tried the content of the blog.
 
-I used the tool cewl, which spiders a url and returns a list of the words that it finds. Running ''cewl 10.10.10.191 >> wordlist.txt''
+I used the tool cewl, which spiders a url and returns a list of the words that it finds. Running `cewl 10.10.10.191 >> wordlist.txt`
 
 Running the rate limit bypass script again with that new wordlist did find a password, RolandDeschain. Onward!
 
 From the bludit dashboard
 ![Bludit Dashboard]({{ site.url }}/images/htb/blunder/dashboard.jpg)
 
-I was able to use CVE-2019-16113 to gain shell access. The bludit content creation page allows image files to be upload, but it doesn't check that the file being uploaded is really an image. This allows remove code execution, which I used to establish a reverse shell. I found the python script for the exploit at [https://github.com/cybervaca/CVE-2019-16113](https://github.com/cybervaca/CVE-2019-16113), and made a couple edits to use blunder's IP and fergus' credentials.
+I was able to use CVE-2019-16113 to gain shell access. The bludit content creation page allows image files to be uploaded, but it doesn't check that the file being uploaded is really an image. This allows remove code execution, which I used to establish a reverse shell. I found the python script for the exploit at [https://github.com/cybervaca/CVE-2019-16113](https://github.com/cybervaca/CVE-2019-16113), and made a couple edits to use blunder's IP and fergus' credentials.
 
 First I started a listener for the reverse shell 
 `nc -lnvp 4444`
@@ -64,7 +64,7 @@ Now with shell access, I still didn't have the user flag yet, so I dug around a 
 
 ## The User flag
 
-![ls](./images/blunder/ls.jpg)
+![ls]({{ site.url }}/images/htb/blunder/ls.jpg)
 I found a newer version of bludit, 3.10.0a and inside there found a users.php.
 ![users.php]({{ site.url }}/images/htb/blunder/users.jpg)
 
