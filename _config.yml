@@ -10,4 +10,5 @@ markdown: kramdown
 collections:
  hack-the-box-walkthroughs:
    output: true
+   permalink: /:collection/:name
 
