@@ -1,3 +1,7 @@
+---
+title: HTB Walkthroughs
+---
+
 {% for walkthrough in site.hack-the-box-walkthroughs %}
 
 <a href="{{ walkthroughs.url | prepend: site.baseurl }}">
