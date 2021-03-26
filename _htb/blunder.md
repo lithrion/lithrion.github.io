@@ -11,7 +11,7 @@ IP: 10.10.10.191
 
 I started off doing a port scan ''nmap -sC -sV 10.10.10.191''
 
-![NMap results](./images/blunder/nmap.jpg)
+![NMap results](../images/blunder/nmap.jpg)
 
 and saw that there was a website so I fired up a browser and took a look.
 
