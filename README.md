@@ -1,6 +1,6 @@
 # lithrion.github.io
 
-This is a portfolio of cybersecurity related projects that I have done. You can get back to the webpage view [here](https://lithrion.github.io)
+This is a portfolio of cybersecurity related projects that I have done. You can get back to the webpage view [here](https://lithrion.github.io).
 
 This portfolio was designed using Jekyll, markdown, and a little bit of liquid.
 
