@@ -9,7 +9,7 @@ This page contains some of the projects that I completed as part of a Cybersecur
 
 {% for project in site.class-projects %}
 
-[{{ project.title }}]({{ walkthrough.url | prepend: site.baseurl }})
-{{ walkthrough.description | truncate: 160 }}
+[{{ project.title }}]({{ project.url | prepend: site.baseurl }})
+{{ project.description | truncate: 160 }}
 
 {% endfor %}
