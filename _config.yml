@@ -8,7 +8,7 @@ github_username: lithrion
 markdown: kramdown
 
 collections:
- hack-the-box-walkthroughs:
+ htb:
    output: true
-   permalink: /htb/:name
+   permalink: /htb/:path/
 
