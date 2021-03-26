@@ -1,6 +1,6 @@
 <nav>
   <ul>
-    <li><a href="/htb/">Hack the Box Walkthroughs</a></li>
+    <li><a href="/htb">Hack the Box Walkthroughs</a></li>
   </ul>
   </nav>
   
