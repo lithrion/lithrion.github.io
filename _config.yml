@@ -8,5 +8,6 @@ github_username: lithrion
 markdown: kramdown
 
 collections:
- - hack-the-box-walkthroughs
+ hack-the-box-walkthroughs:
+   output: true
 
