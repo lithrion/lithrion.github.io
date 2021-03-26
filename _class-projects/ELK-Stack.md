@@ -1,5 +1,6 @@
 ---
 title: ELK Stack Project
+layout: default
 description: Scripts and configuration files to automatically deplay an ELK Stack onto a vritual network
 repository: https://github.com/lithrion/ELK-Stack-Project
 ---
