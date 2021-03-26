@@ -81,7 +81,9 @@ This actually led me to a handful of red herrings. I found a couple different sy
 
 Using the -u flag on sudo to specific a user ID, and \#-1 to enter the negative value, I ran the command
 ''sudo -u \#-1 bash''
+[root access](/images/blunder/root.jpg)
 to open up a new bash shell as root. Then I moved over to root's home directory, and there was the root flag. Mission accomplished.
+[victory](/images/blunder/flag.jpg)
 
 
 
