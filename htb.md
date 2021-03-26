@@ -2,6 +2,8 @@
 title: HTB Walkthroughs
 ---
 
+Testing which page is loading, this is the one in the root directory.
+
 {% for walkthrough in site.htb %}
 
 <a href="{{ walkthrough.url | prepend: site.baseurl }}">
