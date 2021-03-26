@@ -11,4 +11,7 @@ collections:
   htb:
     output: true
     permalink: /_htb/:path/
+  class-projects:
+    output: true
+    permalink: /_class-projects/:path/
 
