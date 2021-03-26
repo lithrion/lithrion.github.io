@@ -9,7 +9,7 @@ IP: 10.10.10.191
 
 ## Reconassiance
 
-I started off doing a port scan ```nmap -sC -sV 10.10.10.191```
+I started off doing a port scan `nmap -sC -sV 10.10.10.191`
 
 ![NMap results]({{ site.url }}/images/htb/blunder/nmap.jpg)
 
