@@ -1,6 +1,6 @@
 ---
 title: Blunder Walkthrough
-description: Description placeholder
+description: Rooting this machine involved bypassing the brute force mitigate of bludit, creating a custom wordlist, and taking advantage of a flaw with sudo and negative values.
 layout: page
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Final Project
 layout: page
-description: The final project from my Cybersecurity course demonstrates aspects of offensive security, defensive security, as well as some network analysis.
+description: This project demonstrates aspects of offensive security, defensive security, as well as some network analysis.
 <!-- repository: https://github.com/lithrion/ELK-Stack-Project -->
 ---
 
