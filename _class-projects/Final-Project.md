@@ -209,8 +209,11 @@ There was some beneign activity detected such as browsing web pages or watching 
 
 A fair amount of traffic was detected between `166.62.111.64` (mysocalledchaos.com) and `172.16.4.205` (Rotterdam-PC.mind-hammer.net)
 ![Web Traffic](/images/class-projects/final/web_traffic.png)
+
 The user appears to have been browsing the website mysocalledchaos.com and also downloaded some files
+
 ![Downloads](/images/class-projects/final/downloads.png)
+
 On closer inspection those files did not raise any concerns.
 
 ### Watching YouTube
