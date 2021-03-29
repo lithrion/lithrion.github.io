@@ -1,0 +1,14 @@
+- name: Install latest apache httpd version
+  apt:
+    name: apache2 
+    state: latest
+  
+- name: install ssh version 8.3
+  apt:
+    name: ssh
+    state: latest
+     
+- name: install latest samba version
+  apt:
+    name: samba
+    state: latest```
