@@ -1,5 +1,5 @@
 ---
-title: HTB Walkthroughs
+title: Hack the Box Walkthroughs
 layout: page
 ---
 
