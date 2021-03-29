@@ -178,7 +178,7 @@ Like the other vulnerability, the solution was to update to a newer version wher
 
 Alternatively, those updates could be done through ansible using a YAML playbook.
 
-`- name: Install latest apache httpd version
+```- name: Install latest apache httpd version
 apt:
   name: apache2 
   state: latest
@@ -191,9 +191,40 @@ apt:
      - name: install latest samba version
      apt:
      name: samba
-     state: latest`
+     state: latest```
 
 
+## Network Analysis
 
+The network analysis portion of the project was done by using wireshark to analyze the network traffic contained within a PCAP file. This traffic was seperate from the previous portion of the project.
 
+Overall the traffic in the PCAP contained 808 unique ip addresses from 3 subnets: `10.0.0.0/24`, `10.6.12.0/24`, and `172.16.4.0/24`
+
+There was some beneign activity detected such as browsing web pages or watching youtube videos, as well as some suspicious activity. There were some instances of files being sent out of the subnet, and well as an instance of malware being sent to a machine.
+
+### Web Browsing
+
+A fair amount of traffic was detected between `166.62.111.64` (mysocalledchaos.com) and `172.16.4.205` (Rotterdam-PC.mind-hammer.net)
+![Web Traffic](/images/class-project/final/web_traffic.jpg)
+The user appears to have been browsing the website mysocalledchaos.com and also downloaded some files
+![Downloads](/images/class-project/final/downloads.jpg)
+On closer inspection those files did not raise any concerns.
+
+### Watching YouTube
+
+Some users were detected connecting to youtube over the TCP protocol.
+![youtube TCP](/images/class-project/final/TCP.jpg)
+and some connections using UDP were found as well.
+![youtube UDP](/images/class-project/final/UDP.jpg)
+
+### Malware Sent to a Machine on the Network (12.6.12.0/24)
+
+There was suspicious traffic between `10.6.12.203` (LAPTOP-5WKHX9YG.frank-n-ted.com) and `205.185.125.104`. A file was downloaded to `10.6.12.203` called june.dll.
+![june.dll](/images/class-project/final/june.jpg)
+Scanning the file on virustotal.com revealed that it was a trojan.
+![virustotal](/images/class-project/final/scan.jpg)
+
+### Files sent out of the subnet (172.16.4.0/24)
+An infected machine on the network `172.16.4.205` (Rotterdam-PC.mind-hammer.net) was detected sending a file to `185.243.115.84` (b5689023.green.mattingsolutions.co).
+![exfiltration](/images/class-projects/final/exfiltration.jpg)
 
