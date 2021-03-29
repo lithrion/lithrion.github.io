@@ -160,15 +160,15 @@ The first step in the defensive portion of the project was to configure the ELK 
 
 #### CPU Usage Monitor
 The first alert was set to monitor metricbeat and to trigger `when max() of system.process.cpu.total.pct all documents is above .05 for the last 5 minutes`
-![CPU Usage Monitor](/images/class-project/final/cpu_usage.png)
+![CPU Usage Monitor](/images/class-projects/final/cpu_usage.png)
 
 #### HTTP Request Size Monitor
 The next alert was monitor packetbeat and set to trigger `when count() over all documents is above 1000 for the last 5 minutes`
-![HTTP Request Size Monitor](/images/class-project/final/HTTPRequest.jpg)
+![HTTP Request Size Monitor](/images/class-projects/final/HTTPRequest.jpg)
 
 #### Excessive HTTP Errors
 The third of the basic alerts for this activity tracked HTTP Errors. It monitored packetbeat and was set to trigger `when count() grouped over top 5 'http.response.status_code' is above 400 for the last 5 minutes`
-![HTTP Errors](/images/class-project/final/HTTPErrors.jpg)
+![HTTP Errors](/images/class-projects/final/HTTPErrors.jpg)
 
 These three alerts were set up before the offensive portion of the project began to catch some of the suspicious activity that might occur during the offensive sections, such as failed login attempts while trying to brute force credentials.
 
@@ -176,21 +176,21 @@ These three alerts were set up before the offensive portion of the project began
 In addition to the vulnerabilities that were used to exploit the machines in the penetration testing section, there were a handful of outdated services running on the target machines with known vulnerabilities.
 
 #### Updating Apache
-Both target machines were running Apache 2.4.10 which contained known vulnerabilities, including CVE-2017-3167
+Both target machines were running Apache 2.4.10 which contained known vulnerabilities, including [CVE-2017-3167](https://www.cvedetails.com/cve/CVE-2017-3167/)
 
-<img src="/images/class-projects/final/apache.png" alt="CVE-201703167" width="300%"/>
+![CVE-201703167](/images/class-projects/final/apache.png)
 
 The vulnerability was patched in versions 2.2.33 and 2.4.26, and updating to the newest apache version mitigates the vulnerability. At the time of the project the latest version of apache was 2.4.46.
 *Mitigation* `sudo apt install apache 2.4`
 
 #### Updating OpenSSH
-The target machines were running OpenSSH 6.7p1 which is vulnerable to CVE-2018-15919.
+The target machines were running OpenSSH 6.7p1 which is vulnerable to [CVE-2018-15919](https://www.cvedetails.com/cve/CVE-2018-15919/).
 ![CVE-2018-15919](/images/class-projects/final/openssh.png)
 The vulnerability existed through versions 7.8, so updating to the latest version of OpenSSH would effectively mitigate the vulnerability. At the time of the project, the latest version was 8.3.
 *Mitigation* `sudo apt install ssh 8.3`
 
 #### Updating Samba
-Another vulnerable service on the target machines was Samba. The machines were vulnerable to a code execution vulnerability through Samba, CVE-2017-7494.
+Another vulnerable service on the target machines was Samba. The machines were vulnerable to a code execution vulnerability through Samba, [CVE-2017-7494](https://www.cvedetails.com/cve/CVE-2017-7494/).
 ![CVE-2017-7494](/images/class-projects/final/samba.png)
 Like the other vulnerability, the solution was to update to a newer version where the vulnerability had been patched. In this case, version 4.12.
 *Mitigation* `sudo apt install samba 4.12`
@@ -208,24 +208,24 @@ There was some beneign activity detected such as browsing web pages or watching 
 ### Web Browsing
 
 A fair amount of traffic was detected between `166.62.111.64` (mysocalledchaos.com) and `172.16.4.205` (Rotterdam-PC.mind-hammer.net)
-![Web Traffic](/images/class-project/final/web_traffic.png)
+![Web Traffic](/images/class-projects/final/web_traffic.png)
 The user appears to have been browsing the website mysocalledchaos.com and also downloaded some files
-![Downloads](/images/class-project/final/downloads.png)
+![Downloads](/images/class-projects/final/downloads.png)
 On closer inspection those files did not raise any concerns.
 
 ### Watching YouTube
 
 Some users were detected connecting to youtube over the TCP protocol.
-![youtube TCP](/images/class-project/final/TCP.png)
+![youtube TCP](/images/class-projects/final/TCP.png)
 and some connections using UDP were found as well.
-![youtube UDP](/images/class-project/final/UDP.png)
+![youtube UDP](/images/class-projects/final/UDP.png)
 
 ### Malware Sent to a Machine on the Network (12.6.12.0/24)
 
 There was suspicious traffic between `10.6.12.203` (LAPTOP-5WKHX9YG.frank-n-ted.com) and `205.185.125.104`. A file was downloaded to `10.6.12.203` called june.dll.
 ![june.dll](/images/class-project/final/june.png)
 Scanning the file on virustotal.com revealed that it was a trojan.
-![virustotal](/images/class-project/final/scan.png)
+![virustotal](/images/class-projects/final/scan.png)
 
 ### Files sent out of the subnet (172.16.4.0/24)
 An infected machine on the network `172.16.4.205` (Rotterdam-PC.mind-hammer.net) was detected sending a file to `185.243.115.84` (b5689023.green.mattingsolutions.co).
