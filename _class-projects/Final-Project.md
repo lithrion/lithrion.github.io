@@ -219,18 +219,25 @@ On closer inspection those files did not raise any concerns.
 ### Watching YouTube
 
 Some users were detected connecting to youtube over the TCP protocol.
+
 ![youtube TCP](/images/class-projects/final/TCP.png)
+
 and some connections using UDP were found as well.
+
 ![youtube UDP](/images/class-projects/final/UDP.png)
 
 ### Malware Sent to a Machine on the Network (12.6.12.0/24)
 
 There was suspicious traffic between `10.6.12.203` (LAPTOP-5WKHX9YG.frank-n-ted.com) and `205.185.125.104`. A file was downloaded to `10.6.12.203` called june.dll.
+
 ![june.dll](/images/class-project/final/june.png)
+
 Scanning the file on virustotal.com revealed that it was a trojan.
+
 ![virustotal](/images/class-projects/final/scan.png)
 
 ### Files sent out of the subnet (172.16.4.0/24)
 An infected machine on the network `172.16.4.205` (Rotterdam-PC.mind-hammer.net) was detected sending a file to `185.243.115.84` (b5689023.green.mattingsolutions.co).
+
 ![exfiltration](/images/class-projects/final/exfiltration.png)
 ![exfiltration2](/images/class-projects/final/exfiltration2.png)
