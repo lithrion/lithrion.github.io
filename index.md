@@ -10,9 +10,7 @@ I have bash script that I will be posting here soon that I wrote to automate the
 
 ### Current Projects
 - GitHub Pages
-
   This portfolio is one of my current projects. In addition to adding content, I'm learning a bit about using Jekyll and making use of custom themes on GitHub.
 - Ruby on Rails
-
   There is a task I am working on automating involving printing barcodes based on web triggers. The planned solution involves creating a web app that can receive a webhook and pass the data along to some barcode software. The tutorials for the web platform and command line tools for generating boilerplate code appear to be based off of outdated versions of the web server's API and no longer function. I am currently looking into learning more about Ruby on Rails in order to build the basic web app.   
 
