@@ -45,6 +45,7 @@ Delving a little deeper into the structure of the website, running DirBuster rev
 As the first step towards gaining login credentials, I used WPScan in order to enumerate usernames.
 `wpscan --url http://192.168.1.110/wordpress --force`
 Which came up with two results.
+
 ![WPScan Results](/images/class-projects/final/wpscan.png)
 
 #### A Foothold
