@@ -2,7 +2,6 @@
 title: Leigh Carter's Cybersecurity Portfolio
 layout: page
 show_sidebar: false
-menubar: Projects
 ---
   
 
