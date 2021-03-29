@@ -64,6 +64,7 @@ Inside the mySQL database using
 Displayed the wordpress tables and then
 ` select * from wp_users;`
 revealed both Michael and Steven's password hashes.
+![hashes](/images/class-projects/final/hashes.jpg)
 
 The database also contained Flag3.
 
