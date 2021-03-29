@@ -1,6 +1,6 @@
 remote_theme: chrisrhymes/bulma-clean-theme
 #theme: bulma-clean-theme
-title: Leigh Carter's Portfolio
+title: Home
 description: A collection of projects from the Cybersecurity course that I took as well as some additional projects I've worked on individually.
 
 permalink: pretty
@@ -14,7 +14,7 @@ fixed_navbar: top
 collections:
   htb:
     output: true
-    permalink: /_htb/:path/
+    permalik: /_htb/:path/
   class-projects:
     output: true
     permalink: /_class-projects/:path/
