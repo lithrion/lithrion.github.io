@@ -7,9 +7,9 @@ description: The final project from my Cybersecurity course demonstrates aspects
 
 # Final Porject
 The final project of the cybersecuirty boot camp that I took through UCSD extension consisted of three parts.
-- Defensive Security
-- Offensive Security
-- Network Analysis
+- [Offensive Security](#offensive-security)
+- [Defensive Security](#defensive-security)
+- [Network Analysis](#network-analysis)
 
 ## Overview
 The defensive security part of the project involved setting up a few rules on an ELK stack using Kibana to detect suspicious activity. Then after completing the offensive portion of the project, we returned to the ELK stack to review the logs of the suspicious activity that occured.
@@ -176,23 +176,7 @@ Another vulnerable service on the target machines was Samba. The machines were v
 Like the other vulnerability, the solution was to update to a newer version where the vulnerability had been patched. In this case, version 4.12.
 *Mitigation* `sudo apt install samba 4.12`
 
-Alternatively, those updates could be done through ansible using a YAML playbook.
-
-```- name: Install latest apache httpd version
-apt:
-  name: apache2 
-  state: latest
-  
-  - name: install ssh version 8.3
-   apt:
-     name: ssh
-     state: latest
-     
-     - name: install latest samba version
-     apt:
-     name: samba
-     state: latest```
-
+Alternatively, those updates could be done through ansible using a [YAML playbook](./updates.yml).
 
 ## Network Analysis
 
