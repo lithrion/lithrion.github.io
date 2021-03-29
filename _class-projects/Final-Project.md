@@ -178,7 +178,7 @@ In addition to the vulnerabilities that were used to exploit the machines in the
 #### Updating Apache
 Both target machines were running Apache 2.4.10 which contained known vulnerabilities, including CVE-2017-3167
 
-<img src="/images/class-projects/final/apache.png" alt="CVE-201703167" height="800%"/>
+<img src="/images/class-projects/final/apache.png" alt="CVE-201703167" width="300%"/>
 
 The vulnerability was patched in versions 2.2.33 and 2.4.26, and updating to the newest apache version mitigates the vulnerability. At the time of the project the latest version of apache was 2.4.46.
 *Mitigation* `sudo apt install apache 2.4`
