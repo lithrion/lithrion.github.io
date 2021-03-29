@@ -29,7 +29,7 @@ The image below shows the topology of the network that was used during this proj
 The Offensive Security portion of the project was a capture the flag activity where the goal was to capture the flags on both Target1 and Target2.
 
 ### Target 1 - 192.168.1.110
-*Objective:* Gain root access on the machine finding 4 Flags along the way.
+**Objective:** Gain root access on the machine finding 4 Flags along the way.
 
 #### Reconnasiance
 A nmap scan of the target revealed a handful of open ports, including port 80 for http traffic.
@@ -121,7 +121,7 @@ Which was the final flag of the activity.
 
 #### Summary
 ##### Target 1
-*Vulnerabilities:*
+**Vulnerabilities:**
 - Weak Password Policy
 - Directory Transversal
 - Insecure SSH
