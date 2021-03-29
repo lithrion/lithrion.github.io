@@ -150,11 +150,11 @@ The first alert was set to monitor metricbeat and to trigger `when max() of syst
 
 #### HTTP Request Size Monitor
 The next alert was monitor packetbeat and set to trigger `when count() over all documents is above 1000 for the last 5 minutes`
-![HTTP Request Size Monitor](/images/class-project/final/HTTPRequest.png)
+![HTTP Request Size Monitor](/images/class-project/final/HTTPRequest.jpg)
 
 #### Excessive HTTP Errors
 The third of the basic alerts for this activity tracked HTTP Errors. It monitored packetbeat and was set to trigger `when count() grouped over top 5 'http.response.status_code' is above 400 for the last 5 minutes`
-![HTTP Errors](/images/class-project/final/HTTPErrors.png)
+![HTTP Errors](/images/class-project/final/HTTPErrors.jpg)
 
 These three alerts were set up before the offensive portion of the project began to catch some of the suspicious activity that might occur during the offensive sections, such as failed login attempts while trying to brute force credentials.
 
@@ -169,7 +169,7 @@ The vulnerability was patched in versions 2.2.33 and 2.4.26, and updating to the
 
 #### Updating OpenSSH
 The target machines were running OpenSSH 6.7p1 which is vulnerable to CVE-2018-15919.
-![CVE-2018-15919](/images/class-proejcts/final/openssh.png)
+![CVE-2018-15919](/images/class-projects/final/openssh.png)
 The vulnerability existed through versions 7.8, so updating to the latest version of OpenSSH would effectively mitigate the vulnerability. At the time of the project, the latest version was 8.3.
 *Mitigation* `sudo apt install ssh 8.3`
 
