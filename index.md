@@ -1,15 +1,9 @@
 ---
-title: Temp title
+title: Leigh Carter's Cybersecurity Portfolio
 layout: page
 show_sidebar: false
 menubar: Projects
 ---
-<nav>
-  <ul>
-    <li><a href="/class-projects">Class Projects</a></li>
-    <li><a href="/htb">Hack the Box Walkthroughs</a></li>
-  </ul>
-  </nav>
   
 
 ## Welcome to GitHub Pages

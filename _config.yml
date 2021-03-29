@@ -1,11 +1,14 @@
 theme: bulma-clean-theme
-title: Welcome to Leigh Carter's Project Portfolio Page.
-description: This page is intended to showcase Cybersecurity related projects that I have completed.
+title: Leigh Carter's Portfolio
+description: A collection of projects from the Cybersecurity course that I took as well as some additional projects I've worked on individually.
 
+permalink: pretty
 github_username: lithrion
 #email: sample@email.com
 #linkedin reference?
 markdown: kramdown
+favicon: /favicon/favicon.ico
+fixed_navbar: top
 
 collections:
   htb:
