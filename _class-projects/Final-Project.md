@@ -138,6 +138,61 @@ Sudo was improperly configured for Steven's account, allowing sudo access to a p
 
 ## Defensive Security
 
+### Configuring Monitoring
+
+The first step in the defensive portion of the project was to configure the ELK server to monitor some of the traffic and statistics from the two target machines.
+
+#### CPU Usage Monitor
+The first alert was set to monitor metricbeat and to trigger `when max() of system.process.cpu.total.pct all documents is above .05 for the last 5 minutes`
+![CPU Usage Monitor](/images/class-project/final/cpu_usage.jpg)
+
+#### HTTP Request Size Monitor
+The next alert was monitor packetbeat and set to trigger `when count() over all documents is above 1000 for the last 5 minutes`
+![HTTP Request Size Monitor](/images/class-project/final/HTTPRequest.jpg)
+
+#### Excessive HTTP Errors
+The third of the basic alerts for this activity tracked HTTP Errors. It monitored packetbeat and was set to trigger `when count() grouped over top 5 'http.response.status_code' is above 400 for the last 5 minutes`
+
+These three alerts were set up before the offensive portion of the project began to catch some of the suspicious activity that might occur during the offensive sections, such as failed login attempts while trying to brute force credentials.
+
+### Hardening the Servers
+In addition to the vulnerabilities that were used to exploit the machines in the penetration testing section, there were a handful of outdated services running on the target machines with known vulnerabilities.
+
+#### Updating Apache
+Both target machines were running Apache 2.4.10 which contained known vulnerabilities, including CVE-2017-3167
+![CVE-201703167](/images/class-project/final/apache.jpg)
+The vulnerability was patched in versions 2.2.33 and 2.4.26, and updating to the newest apache version mitigates the vulnerability. At the time of the project the latest version of apache was 2.4.46.
+*Mitigation* `sudo apt install apache 2.4`
+
+#### Updating OpenSSH
+The target machines were running OpenSSH 6.7p1 which is vulnerable to CVE-2018-15919.
+~[CVE-2018-15919](/images/class-proejct/final/openssh.jpg)
+The vulnerability existed through versions 7.8, so updating to the latest version of OpenSSH would effectively mitigate the vulnerability. At the time of the project, the latest version was 8.3.
+*Mitigation* `sudo apt install ssh 8.3`
+
+#### Updating Samba
+Another vulnerable service on the target machines was Samba. The machines were vulnerable to a code execution vulnerability through Samba, CVE-2017-7494.
+~[CVE-2017-7494](/images/class-project/final/samba.jpg)
+Like the other vulnerability, the solution was to update to a newer version where the vulnerability had been patched. In this case, version 4.12.
+*Mitigation* `sudo apt install samba 4.12`
+
+Alternatively, those updates could be done through ansible using a YAML playbook.
+
+`- name: Install latest apache httpd version
+apt:
+  name: apache2 
+  state: latest
+  
+  - name: install ssh version 8.3
+   apt:
+     name: ssh
+     state: latest
+     
+     - name: install latest samba version
+     apt:
+     name: samba
+     state: latest`
+
 
 
 
