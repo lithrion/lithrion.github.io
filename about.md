@@ -1,5 +1,5 @@
 ---
-title: about
+title: About
 layout: page
 ---
 Leigh Carter is aspiring to become a Cybersecurity Professional. He recently completed a Cybersecurity Bootcamp offered through UCSD extension where he learned a wide range of foundational Cybersecurity related skills. [Curriculum](https://bootcamp.extension.ucsd.edu/cybersecurity/curriculum/) He has started to build on the foundational skills by practicing offensive security on machines hosted by Hack the Box, and is currently studying for the CompTIA Security+ certification.
