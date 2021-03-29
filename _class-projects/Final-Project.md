@@ -71,7 +71,8 @@ The database also contained Flag3.
 #### John the ripper
 By exporting the two hashes from the database into a text file, John the Ripper was able to crack one of the two hashes. This gave Steven's password, pink84.
 `john hashes.txt`
-~[John the Ripper](/images/class-projects/final/john.jpg)
+![John the Ripper](/images/class-projects/final/john.jpg)
+![John Results](/images/class-projects/final/john_results.jpg)
 
 #### Privilege Escalation
 After switching users to Steven, I checked his sudo access.
