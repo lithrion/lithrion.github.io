@@ -1,3 +1,7 @@
+---
+title: Temp title
+layout: page
+---
 <nav>
   <ul>
     <li><a href="/class-projects">Class Projects</a></li>
