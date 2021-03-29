@@ -1,5 +1,6 @@
 ---
 title: UCSD Cybersecurity Bootcamp Projects
+layout: page
 ---
 # Class Projects
 - ELK Stack Project

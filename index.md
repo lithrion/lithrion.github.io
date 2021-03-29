@@ -1,6 +1,8 @@
 ---
 title: Temp title
 layout: page
+show_sidebar: false
+menubar: Projects
 ---
 <nav>
   <ul>

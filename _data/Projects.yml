@@ -1,0 +1,8 @@
+- label: Projects
+  items:
+    - name: Home
+      link: /
+    - name: Hack the Box Walkthroughs
+      link: /htb/
+    - name: Cybersecurity Bootcamp Projects
+      link: /class-projects/

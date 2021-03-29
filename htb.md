@@ -1,5 +1,6 @@
 ---
 title: HTB Walkthroughs
+layout: page
 ---
 
 {% for walkthrough in site.htb %}
