@@ -154,6 +154,7 @@ The next alert was monitor packetbeat and set to trigger `when count() over all 
 
 #### Excessive HTTP Errors
 The third of the basic alerts for this activity tracked HTTP Errors. It monitored packetbeat and was set to trigger `when count() grouped over top 5 'http.response.status_code' is above 400 for the last 5 minutes`
+![HTTP Errors](/images/class-project/final/HTTPErrors.jpg)
 
 These three alerts were set up before the offensive portion of the project began to catch some of the suspicious activity that might occur during the offensive sections, such as failed login attempts while trying to brute force credentials.
 
