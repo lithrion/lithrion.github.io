@@ -9,7 +9,7 @@ Welcome to my portfolio where I've posted a handful of Cybersecurity related pro
 I have bash script that I will be posting here soon that I wrote to automate the process of turning a csv file of product specs into product pages for an ecommerce website.
 
 ### Current Projects
-- GitHub Pages
+- [GitHub Pages](https://github.com/lithrion/lithrion.github.io)
 
   This portfolio is one of my current projects. In addition to adding content, I'm learning Jekyll and importing custom theme elements into GitHub.
   
