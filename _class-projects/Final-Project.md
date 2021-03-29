@@ -5,7 +5,7 @@ description: The final project from my Cybersecurity course demonstrates aspects
 <!-- repository: https://github.com/lithrion/ELK-Stack-Project -->
 ---
 
-# Final Porject
+# Final Project
 The final project of the cybersecuirty boot camp that I took through UCSD extension consisted of three parts.
 - [Offensive Security](#offensive-security)
 - [Defensive Security](#defensive-security)
