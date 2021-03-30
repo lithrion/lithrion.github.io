@@ -13,6 +13,7 @@ I have bash script that I will be posting here soon that I wrote to automate the
 
   This portfolio is one of my current projects. In addition to adding content, I'm learning Jekyll and importing custom theme elements into GitHub.
   
+  
 - Ruby on Rails
 
   I am working on an automation task for printing barcodes based on webhook triggers. The planned solution involves creating a web app that can receive a webhook and pass the data along to a barcode handling application. The tutorials for the web platform and command line tools for generating boilerplate code appear to be based off of outdated versions of the web server's API and no longer function. I am looking into Ruby on Rails more in order to build the basic web app.   
