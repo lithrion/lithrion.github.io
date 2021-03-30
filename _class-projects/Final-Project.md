@@ -16,11 +16,11 @@ The defensive security part of the project involved setting up a few rules on an
 
 The offensive security portion of the project was a capture the flag type activity where we exploited vulnerabilities on the machine that the ELK stack was monitoring.
 
-The network analysis portion of the project was independent of the offensive/defensive sections, and involved analysis a PCAP file for suspicious activity.
+The network analysis portion of the project was independent of the offensive/defensive sections, and involved analysis of a PCAP file for suspicious activity.
 
 ## Network Topology
 
-The image below shows the topology of the network that was used during this project. Target1 and Target2 were the focus of the offesnive security portion of the project. The defensive portion focused on the ELK server, which was observing Target 1 and Target2. The Capstone machine was part of another project, and the network anaylsis portion of the project was independnet of this network.
+The image below shows the topology of the network that was used during this project. Target1 and Target2 were the focus of the offensive security portion of the project. The defensive portion focused on the ELK server, which was observing Target 1 and Target2. The Capstone machine was part of another project, and the network anaylsis portion of the project was independnet of this network.
 
 ![Network Topology](/images/class-projects/final/topology.png)
 
