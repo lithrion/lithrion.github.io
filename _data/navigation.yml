@@ -2,5 +2,7 @@
   link: /htb/
 - name: Cybersecurity Projects
   link: /class-projects/
+- name: Resume
+  link: /assets/resume.pdf
 - name: About
   link: /about/
