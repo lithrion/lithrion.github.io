@@ -219,15 +219,15 @@ A fair amount of traffic was detected between `166.62.111.64` (mysocalledchaos.c
 
 ![Web Traffic](/images/class-projects/final/web_traffic.png)
 
-The user appears to have been browsing the website mysocalledchaos.com and also downloaded some files
+The user appears to have been browsing the website mysocalledchaos.com and also downloaded some files.
 
 ![Downloads](/images/class-projects/final/downloads.png)
 
-On closer inspection those files did appear to be malicious.
+On closer inspection those files did not appear to be malicious.
 
 ### Watching YouTube
 
-Some users were detected connecting to YouTube over the TCP protocol.
+Some users were detected connecting to YouTube over the TCP protocol
 
 ![YouTube TCP](/images/class-projects/final/TCP.png)
 
