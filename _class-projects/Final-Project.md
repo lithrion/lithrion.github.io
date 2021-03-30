@@ -40,7 +40,7 @@ A nmap scan of the target revealed a handful of open ports, including port 80 fo
 
 Visiting 192.168.1.110 in a web browser revealed some general information about the company that the website was for, including some employee names and positions. Inspecting the source code of the website revealed the first flag inside one of the webpages.
 
-Delving a little deeper into the structure of the website, running DirBuster revealed some addition files and directories. This included a login page, and well as indicating that the website was build using wordpress.
+Delving a little deeper into the structure of the website, running DirBuster revealed some addition files and directories. This included a login page as well as indicating that the website was built using wordpress.
 
 #### Enumerating Users
 
@@ -55,18 +55,18 @@ Which came up with two results.
 Another open port from the nmap scan back at the beginning was 22, or ssh. It turned out Michael had a terribly weak password, it was the same as his username. Which made for a pretty quick way to gain access to the machine without even requiring any additional tools.
 `ssh Michael@192.168.1.110`
 
-Once logged in, looking around a little found Flag2 inside the `/var/www` directory. Looking a little further found a useful config file, `wp-config.php` located at `/var/www/html/wordpress`
+Once logged in, Flag2 was inside the `/var/www` directory. After looking a little further I found a useful config file `wp-config.php` located at `/var/www/html/wordpress`
 
 ![WP Config](/images/class-projects/final/wpconfig.png)
 
-Inside the configuration was were the credentials for a MySQL database.
+Inside the configuration were the credentials for a mySQL database.
 
 #### mySQL Database
 Inside the mySQL database using
 `show databases;`
 `show tables;`
 Displayed the wordpress tables and then
-` select * from wp_users;`
+`select * from wp_users;`
 revealed both Michael and Steven's password hashes.
 
 ![hashes](/images/class-projects/final/hashes.png)
