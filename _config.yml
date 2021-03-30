@@ -18,4 +18,5 @@ collections:
   class-projects:
     output: true
     permalink: /_class-projects/:path/
-
+  assets:
+    permalink: /_assets/:path/
